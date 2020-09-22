@@ -2,7 +2,7 @@
 
 /**
  * _abs - computes absolute value of an int
- * @int: this is the integer we are testing
+ * @a: this is the integer we are testing
  * Return: is the ints postive value
  */
 int _abs(int a)
