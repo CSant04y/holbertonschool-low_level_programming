@@ -1,18 +1,20 @@
 #include "holberton.h"
 /**
- * put2 - this function prints every other number
- * @str: this is a pointer to the string
+ * puts2 - this prints every other char
+ * @str: this is the string
  * Return: nothing
  */
+
 void puts2(char *str)
 {
-	int itr = 0;
+	int cyl = 0;
 
-	while (str[itr])
+	while (*str != '\0')
 	{
-		if (itr % 2 == 0)
-			_putchar(str[itr]);
-		itr = itr + 2;
+		if (cyl % 2 == 0)
+			_putchar(*str);
+		str++;
+		cyl++;
 	}
 	_putchar(10);
 }
