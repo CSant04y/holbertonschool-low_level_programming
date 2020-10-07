@@ -14,7 +14,7 @@ int _sqrt_recursion(int n)
 /**
  * find_sqrt - this find the square root with recursion
  * @num: this is the number we are trying to find the square root of
- * @count: this number is the numbers we are testing
+ * @c: this number is the numbers we are testing
  * Return: the count
  */
 int find_sqrt(int num, int c)
