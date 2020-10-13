@@ -9,7 +9,7 @@ char *_strdup(char *str)
 	char *ptr;
 	unsigned int count = 0;
 
-	if (*str == 0)
+	if (*str == NULL)
 		return (NULL);
 	while (str[count] != '\0')
 		count++;
