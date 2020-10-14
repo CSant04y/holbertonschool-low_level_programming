@@ -28,6 +28,8 @@ char *argstostr(int ac, char **av)
 		for (j = 0; av[i][j]; j++, count2++)
 		{
 			ptr[count2] = av[i][j];
+			if (ptr[count2] == '\0')
+				return (NULL);
 		}
 		ptr[count2] = 10;
 		count2++;
