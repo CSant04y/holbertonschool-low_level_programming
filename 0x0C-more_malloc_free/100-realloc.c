@@ -20,10 +20,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	p = malloc(sizeof(char) * new_size);
 	if (p == NULL)
-	{
-		perror("allocation failed");
 		return (NULL);
-	}
 	if (ptr)
 	{
 		_memcpy(p, ptr, old_size);
