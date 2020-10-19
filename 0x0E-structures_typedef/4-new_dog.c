@@ -3,7 +3,7 @@ char *_strdup(char *str);
 /**
  * *new_dog - this makes a new dog
  * @name: this is the name of dog
- * @age this is the owner
+ * @age: this is the owner
  * @owner: the name of the owner
  * Return: this is dog_t
  */
