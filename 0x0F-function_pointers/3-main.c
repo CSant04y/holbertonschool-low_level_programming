@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 	num2 = atoi(argv[3]);
 
 	func_op = get_op_func(argv[2]);
-	if (strlen(argv[2] > 1) || !func_op)
+	if (strlen(argv[2]) > 1 || !func_op)
 	{
 		printf("Error\n");
 		exit(99);
