@@ -9,6 +9,8 @@ void free_listint2(listint_t **head)
 	listint_t *node, *tmp;
 
 	tmp = *head;
+	if (tmp == NULL)
+		return;
 	while (tmp != NULL)
 	{
 		node = tmp->next;/*Setting node equal to pointer to next element*/
