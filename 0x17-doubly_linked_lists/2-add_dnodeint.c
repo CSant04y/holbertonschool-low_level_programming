@@ -1,4 +1,4 @@
-BB#include "lists.h"
+#include "lists.h"
 /**
  * add_dnodeint - This adds a node to the front of the linked list
  * @head: this is a double pointer that is the head
@@ -19,6 +19,7 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 
 	if (*head != NULL)
 		(*head)->prev = n_node;
+
 	*head = n_node;
 
 	return (n_node);
