@@ -1,4 +1,4 @@
-#include "lists.h"
+B#include "lists.h"
 /**
  * insert_dnodeint_at_index - Inserting a node at the index provided.
  * @h: head of linke dlist
@@ -39,7 +39,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	new->next = current->next;
 	current->next = new;
 	new->prev = current;
-	free (new);
+	free(new);
 	return (new);
 }
 
