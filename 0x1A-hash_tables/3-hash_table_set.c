@@ -45,7 +45,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new_node->next = ht->array[idx_value];
 	ht->array[idx_value] = new_node;
 
-	return (0);
+	return (1);
 }
 /**
  * init_node - This function initilizes the node with a key and value in LL
