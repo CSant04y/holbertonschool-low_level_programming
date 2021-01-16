@@ -26,7 +26,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new_node = init_node(key_dup, value_dup);
 	if (new_node == NULL)
 	{
-		free_func(&new_node, &key_dup, &value_dup);
+		free_func(new_node, key_dup, value_dup);
 		return (0);
 	}
 	idx_value = key_index((unsigned char *)key_dup, ht->size);
@@ -75,9 +75,9 @@ hash_node_t *init_node(char *key_dup, char *value_dup)
  * Return: Nothing
  */
 
-void free_func(hash_node_t **new_node, char **key, char **value)
+void free_func(hash_node_t *new_node, char *key, char *value)
 {
-	free(*new_node);
-	free(*key);
-	free(*value);
+	free(new_node);
+	free(key);
+	free(value);
 }
