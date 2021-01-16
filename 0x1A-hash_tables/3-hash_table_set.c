@@ -8,7 +8,7 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new_node = NULL;
+	hash_node_t *new_node = NULL, *current = NULL;
 	char *key_dup = NULL, *value_dup = NULL;
 	unsigned long int idx_value = 0;
 
@@ -19,7 +19,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	value_dup = strdup(value);
 	if (key_dup == NULL || value_dup == NULL)
 	{
-		free_func(&new_node, &key_dup, &value_dup);
+		free(key_dup);
+		free(value_dup);
 		return (0);
 	}
 	new_node = init_node(key_dup, value_dup);
@@ -29,23 +30,22 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 	idx_value = key_index((unsigned char *)key_dup, ht->size);
-	if (idx_value == 0)
+
+	for (current = ht->array[idx_value]; current != NULL; current = current->next)
 	{
-		free_func(&new_node, &key_dup, &value_dup);
-		return (0);
-	}
-	for (; ht->array[idx_value] != NULL; idx_value++)
-	{
-		if (!(strcmp(new_node->key, ht->array[idx_value]->key)))
+		if (!(strcmp(new_node->key, current->key)))
 		{
-			free(ht->array[idx_value]->value);
-			ht->array[idx_value]->value = value_dup;
-			free_func(&new_node, &key_dup, &value_dup);
+			free(current->value);
+			current->value = value_dup;
+			free(new_node);
+			free(key_dup);
 			return (1);
 		}
 	}
+	new_node->next = ht->array[idx_value];
 	ht->array[idx_value] = new_node;
-	return (1);
+
+	return (0);
 }
 /**
  * init_node - This function initilizes the node with a key and value in LL
@@ -57,7 +57,7 @@ hash_node_t *init_node(char *key_dup, char *value_dup)
 {
 	hash_node_t *new_node = NULL;
 
-	new_node = malloc(sizeof(hash_node_t));
+	new_node = malloc(sizeof(hash_node_t *));
 	if (new_node == NULL)
 		return (NULL);
 
